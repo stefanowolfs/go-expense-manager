@@ -3,6 +3,7 @@ package api
 import (
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/stefanowolf/go-expense-manager/internal/infra/logger"
 	"log"
 	"net/http"
 	"os"
@@ -27,7 +28,7 @@ func sanityCheck() {
 	}
 	for _, k := range envProps {
 		if os.Getenv(k) == "" {
-			log.Println(fmt.Sprintf("Environment variable %s not defined. Terminating application...", k))
+			logger.Error(fmt.Sprintf("Environment variable %s not defined. Terminating application...", k))
 		}
 	}
 }
