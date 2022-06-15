@@ -2,7 +2,15 @@
 
 ## Description
 
-An API that will help users manage they're expenses.
+This is a simple expense manager API.
+
+## Project Context
+
+Initially, this API will serve as a simple expense tracker. With the following features:
+- Add, edit, and delete expenses.
+- Group and filter expenses based on period, cost center & expense tag/type.
+- Provide a monthly expense report per user.
+- Export expenses to CSV.
 
 ## Project status
 
