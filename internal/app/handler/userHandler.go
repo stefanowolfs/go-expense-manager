@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stefanowolf/go-expense-manager/internal/core/dto"
 	"github.com/stefanowolf/go-expense-manager/internal/core/service"
-	"github.com/stefanowolf/go-expense-manager/internal/infra/connector"
 	"github.com/stefanowolf/go-expense-manager/internal/infra/datasource/mysql"
 	"github.com/stefanowolf/go-expense-manager/internal/infra/logger"
 	"net/http"
@@ -13,7 +12,7 @@ import (
 func AddUserRoutes(rg *gin.RouterGroup) {
 	userRouter := rg.Group("/users")
 
-	userService := service.NewUserService(mysql.NewUserRepositoryDB(connector.MySQLClient))
+	userService := service.NewUserService(mysql.NewUserRepositoryDB())
 	handler := UserHandler{service: userService}
 
 	userRouter.GET("", handler.GetAllUsers)

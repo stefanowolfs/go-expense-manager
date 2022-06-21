@@ -3,7 +3,7 @@ package service
 import (
 	"github.com/stefanowolf/go-expense-manager/internal/core/domain"
 	"github.com/stefanowolf/go-expense-manager/internal/core/dto"
-	"github.com/stefanowolf/go-expense-manager/internal/infra/datasource"
+	"github.com/stefanowolf/go-expense-manager/internal/infra/datasource/mysql"
 	"github.com/stefanowolf/go-expense-manager/internal/infra/errs"
 	"time"
 )
@@ -14,7 +14,7 @@ type UserService interface {
 }
 
 type DefaultUserService struct {
-	userRepo datasource.UserRepositoryDB
+	userRepo mysql.UserRepositoryDB
 }
 
 func (s DefaultUserService) GetAll() ([]*dto.UserResponse, *errs.AppError) {
@@ -50,6 +50,6 @@ func (s DefaultUserService) NewUser(req dto.NewUserRequest) (*dto.UserResponse, 
 	return &response, nil
 }
 
-func NewUserService(userRepo datasource.UserRepositoryDB) UserService {
+func NewUserService(userRepo mysql.UserRepositoryDB) UserService {
 	return DefaultUserService{userRepo}
 }

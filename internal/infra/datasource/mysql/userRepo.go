@@ -4,10 +4,13 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 	"github.com/stefanowolf/go-expense-manager/internal/core/domain"
+	"github.com/stefanowolf/go-expense-manager/internal/infra/connector"
 	"github.com/stefanowolf/go-expense-manager/internal/infra/errs"
 	"github.com/stefanowolf/go-expense-manager/internal/infra/logger"
 	"strconv"
 )
+
+var dbClient = connector.MySQLClient
 
 type UserRepositoryDB struct {
 	client *sqlx.DB
@@ -42,6 +45,6 @@ func (d UserRepositoryDB) Save(user domain.User) (*domain.User, *errs.AppError) 
 	return &user, nil
 }
 
-func NewUserRepositoryDB(dbClient *sqlx.DB) UserRepositoryDB {
+func NewUserRepositoryDB() UserRepositoryDB {
 	return UserRepositoryDB{dbClient}
 }
