@@ -17,8 +17,8 @@ Initially, this API will serve as a simple expense tracker. With the following f
 - [x] Add initial app design.
 - [x] Add a logger package.
 - [x] Add a http router package.
-- [ ] Add/config the database.
-- [ ] Add/config core domain mappings.
+- [x] Config database.
+- [x] Config core domain mappings.
 - [ ] Add swagger for API Documentation.
 ... Work in Progress ...
 
