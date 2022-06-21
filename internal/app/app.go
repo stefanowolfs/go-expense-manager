@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stefanowolf/go-expense-manager/internal/app/handler"
 	"github.com/stefanowolf/go-expense-manager/internal/core/dto"
-	"github.com/stefanowolf/go-expense-manager/internal/infra/adapter"
+	"github.com/stefanowolf/go-expense-manager/internal/infra/connector"
 	"github.com/stefanowolf/go-expense-manager/internal/infra/logger"
 	"log"
 	"net/http"
@@ -18,7 +18,7 @@ var (
 
 func Start() {
 	sanityCheck()
-	adapter.DBConfig()
+	connector.StartMySQLConn()
 	initRouter()
 }
 

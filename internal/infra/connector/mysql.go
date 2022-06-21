@@ -1,4 +1,4 @@
-package adapter
+package connector
 
 import (
 	"fmt"
@@ -8,9 +8,9 @@ import (
 	"time"
 )
 
-var MYSQLDB *sqlx.DB
+var MySQLClient *sqlx.DB
 
-func DBConfig() *errs.AppError {
+func StartMySQLConn() *errs.AppError {
 	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWD")
 	dbAddr := os.Getenv("DB_ADDR")
@@ -25,6 +25,6 @@ func DBConfig() *errs.AppError {
 	client.SetConnMaxLifetime(time.Minute * 3)
 	client.SetMaxOpenConns(10)
 	client.SetMaxIdleConns(10)
-	MYSQLDB = client
+	MySQLClient = client
 	return nil
 }
